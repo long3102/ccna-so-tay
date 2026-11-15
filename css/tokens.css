@@ -1,0 +1,30 @@
+:root {
+  --paper: #efe6d4;
+  --paper-deep: #e5d9c2;
+  --card: #fffaf2;
+  --ink: #1c2430;
+  --muted: #5e6874;
+  --line: #ddcfb6;
+  --teal: #0f6e62;
+  --teal-dark: #0c3f38;
+  --teal-soft: #e5f3ef;
+  --copper: #b54824;
+  --copper-soft: #f8ebe4;
+  --gold: #8a5a12;
+  --gold-soft: #f8efd4;
+  --sidebar: #162027;
+  --sidebar-ink: #e7efe9;
+  --sidebar-dim: #9aab9f;
+  --cli: #122028;
+  --cli-ink: #d7e6df;
+  --ok: #0f6e45;
+  --ok-soft: #e4f5eb;
+  --bad: #9d2c2c;
+  --bad-soft: #fdecec;
+  --shadow: 0 12px 30px rgba(48, 36, 18, 0.08);
+  --serif: "Be Vietnam Pro", "Segoe UI", "Helvetica Neue", sans-serif;
+  --mono: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+  --radius: 14px;
+  --sidebar-w: 292px;
+  --top: 64px;
+}

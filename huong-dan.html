@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cách làm lab · CCNA Sổ tay</title>
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <main class="page" id="content">
+    <p class="kicker">Thực hành</p>
+    <h1>Làm lab ở đâu, và cách học cho đỡ quên</h1>
+    <p class="lede">Trang này dạy ý tưởng và đối chiếu lệnh. Tay bạn chỉ nhớ sau khi tự gõ trên một thiết bị giả lập. Đừng đọc đáp án lab rồi đánh dấu là đã học.</p>
+    <h2>1. Cài một chỗ để gõ lệnh Cisco</h2>
+    <ol>
+      <li>Vào Cisco Networking Academy, tạo tài khoản miễn phí, rồi tải <strong>Packet Tracer</strong>. Đây là lựa chọn hợp người mới nhất vì có máy tính, switch, router và dây kéo thả.</li>
+      <li>Nếu máy bạn không chạy Packet Tracer, dùng Cisco Modeling Labs khi bạn có điều kiện, hoặc một switch/router thật đã được phép đụng. Đừng tải file IOS lậu.</li>
+      <li>Mỗi buổi có chữ “Lab” thì mở một file Packet Tracer mới, đặt tên theo mã buổi, ví dụ <code>2-1-vlan.pkt</code>.</li>
+    </ol>
+    <h2>2. Cách đọc lệnh trong giáo án</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dấu nhắc</th><th>Bạn đang ở</th><th>Vào bằng</th></tr></thead>
+        <tbody>
+          <tr><td><code>Router&gt;</code></td><td>User EXEC, chỉ xem được ít lệnh</td><td>Vừa đăng nhập</td></tr>
+          <tr><td><code>Router#</code></td><td>Privileged EXEC, xem và lưu cấu hình</td><td><code>enable</code></td></tr>
+          <tr><td><code>Router(config)#</code></td><td>Global configuration</td><td><code>configure terminal</code></td></tr>
+          <tr><td><code>Router(config-if)#</code></td><td>Trong một cổng</td><td><code>interface g0/0</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Dòng không có dấu nhắc là lệnh bạn gõ. Dòng có dấu nhắc là chỗ lệnh đó sống. Gõ <code>?</code> bất cứ lúc nào để IOS liệt kê lệnh hợp lệ tại đó. Gõ <code>Tab</code> để hoàn thành từ.</p>
+    <h2>3. Một vòng học 50 phút</h2>
+    <ol>
+      <li>Đọc mục tiêu. Nếu một từ lạ, cứ đọc tiếp hai đoạn; đừng tra cả từ điển trước.</li>
+      <li>Che đáp án, tự làm ví dụ bằng giấy.</li>
+      <li>Làm lab đến khi ping hoặc <code>show</code> ra đúng trạng thái bài yêu cầu.</li>
+      <li>Chấm câu tự kiểm. Sai câu nào, sửa bằng cách chỉ vào dòng lệnh hoặc con số, không chỉ nhớ chữ cái A B C D.</li>
+      <li>Viết ba dòng vào ô ghi chú: việc đã làm, chỗ vấp, lệnh phải gõ lại ngày mai.</li>
+    </ol>
+    <h2>4. Khi kẹt lab</h2>
+    <ul>
+      <li>Nhìn đèn cổng. Xanh là có lớp 1. Đỏ hoặc tắt là đừng vội đổ cho định tuyến.</li>
+      <li>Ping cổng gần nhất trước, rồi mới ping máy xa.</li>
+      <li>Đường đi và đường về là hai chuyện. Máy A tới được B không có nghĩa B biết đường về A.</li>
+      <li>Sau khi sửa, gõ <code>copy running-config startup-config</code>. Tắt máy lab mà chưa lưu thì ngày mai cấu hình biến mất, đúng như thiết bị thật.</li>
+    </ul>
+    <h2>5. Mở giáo án trên máy</h2>
+    <p>Nhấp đúp <code>index.html</code> là học được. Nếu một buổi báo chưa tải được file, mở Terminal đúng thư mục dự án rồi chạy:</p>
+    <figure class="cli"><header><span>Máy chủ tĩnh</span></header><pre>python3 -m http.server 8765</pre></figure>
+    <p>Sau đó mở <code>http://127.0.0.1:8765</code>. Tiến độ và ghi chú nằm trong trình duyệt của bạn, khóa <code>ccna-so-tay-v2</code>.</p>
+    <p><a class="btn" href="bai.html?id=0.1">Tới buổi đầu</a></p>
+  </main>
+  <script src="js/format.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/curriculum.js"></script>
+  <script src="js/shell.js"></script>
+  <script>
+    Shell.render({ active: "lab" });
+  </script>
+</body>
+</html>
