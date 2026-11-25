@@ -10,7 +10,7 @@
   <main class="page" id="content">
     <p class="kicker">Công cụ</p>
     <h1>Tính subnet bằng tay, máy chỉ chấm</h1>
-    <p class="lede">Phần hướng dẫn hiện từng bước. Phần luyện cho một đề ngẫu nhiên và đợi bạn điền. Đừng dùng phần hướng dẫn để trả lời phần luyện.</p>
+    <p class="lede">Phần hướng dẫn hiện từng bước. Phần luyện rút 5 câu từ ngân hàng. Tính trên giấy, rồi mới chọn đáp án. Đừng dùng phần hướng dẫn để trả lời phần luyện.</p>
     <div class="tool-grid">
       <section class="panel">
         <h2>Giải một địa chỉ</h2>
@@ -20,25 +20,25 @@
         <div id="explain-out"></div>
       </section>
       <section class="panel">
-        <h2>Luyện</h2>
-        <p class="practice-q" id="prompt">Bấm “Đề mới”.</p>
-        <label class="field">Địa chỉ mạng<input id="a-net" autocomplete="off"></label>
-        <label class="field">Địa chỉ dùng được đầu tiên<input id="a-first" autocomplete="off"></label>
-        <label class="field">Địa chỉ dùng được cuối<input id="a-last" autocomplete="off"></label>
-        <label class="field">Broadcast<input id="a-bcast" autocomplete="off"></label>
-        <label class="field">Số host dùng được<input id="a-hosts" inputmode="numeric" autocomplete="off"></label>
+        <h2>Cách luyện</h2>
+        <p>Ngân hàng gồm nhiều câu về địa chỉ mạng, broadcast, host đầu, host cuối, số host, mask, wildcard, bước nhảy, chọn prefix và cách chia subnet. Mỗi lượt chỉ hỏi 5 câu, mỗi câu một dạng.</p>
+        <p id="practice-meta"></p>
         <div class="hero-actions">
-          <button class="btn" id="check" type="button">Chấm</button>
-          <button class="btn ghost" id="new" type="button">Đề mới</button>
+          <button class="btn ghost" id="new-set" type="button">Đổi 5 câu khác</button>
         </div>
-        <p id="verdict"></p>
       </section>
     </div>
+    <section class="panel quiz-board">
+      <h2>5 câu của lượt này</h2>
+      <div id="practice-quiz" class="quiz"></div>
+    </section>
   </main>
   <script src="../js/format.js"></script>
   <script src="../js/progress.js"></script>
   <script src="../js/curriculum.js"></script>
   <script src="../js/shell.js"></script>
+  <script src="../js/quiz.js"></script>
   <script src="../js/subnet.js"></script>
+  <script src="../js/subnet-bank.js"></script>
 </body>
 </html>

@@ -200,6 +200,8 @@ th { background: #f6efe2; font-size: 0.85rem; }
 
 .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
+.quiz-board { margin-top: 16px; }
+
 .panel {
   background: var(--card);
   border: 1px solid var(--line);

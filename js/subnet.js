@@ -86,62 +86,65 @@ const Subnet = (() => {
       </ol>`;
   }
 
-  return { analyze, explain, ipToInt };
+  return { analyze, explain, ipToInt, intToIp };
 })();
 
-Shell.render({ active: "subnet", root: "../" });
+const SubnetPage = (() => {
+  function shuffle(list) {
+    const copy = list.slice();
+    for (let i = copy.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const swap = copy[i];
+      copy[i] = copy[j];
+      copy[j] = swap;
+    }
+    return copy;
+  }
 
-let current = null;
+  function drawFive(bank) {
+    const groups = new Map();
+    bank.forEach((item) => {
+      if (!groups.has(item.type)) groups.set(item.type, []);
+      groups.get(item.type).push(item);
+    });
+    const picked = [];
+    const used = new Set();
+    shuffle([...groups.keys()]).forEach((type) => {
+      if (picked.length >= 5) return;
+      const list = groups.get(type);
+      const choice = list[Math.floor(Math.random() * list.length)];
+      picked.push(choice);
+      used.add(choice);
+    });
+    if (picked.length < 5) {
+      shuffle(bank.filter((item) => !used.has(item))).slice(0, 5 - picked.length).forEach((item) => {
+        picked.push(item);
+      });
+    }
+    return picked;
+  }
 
-function newQuestion() {
-  const prefix = 16 + Math.floor(Math.random() * 13);
-  const block = 2 ** (32 - prefix);
-  const base = Math.floor(Math.random() * (2 ** prefix)) * block;
-  const network = base >>> 0;
-  const hostOffset = prefix >= 31 ? 0 : 1 + Math.floor(Math.random() * Math.max(1, block - 2));
-  const ip = (network + hostOffset) >>> 0;
-  current = Subnet.analyze([24, 16, 8, 0].map((shift) => (ip >>> shift) & 255).join("."), prefix);
-  document.getElementById("prompt").textContent = `${current.ip}/${prefix}`;
-  ["a-net", "a-first", "a-last", "a-bcast", "a-hosts"].forEach((id) => {
-    document.getElementById(id).value = "";
+  function start(bank) {
+    const host = document.getElementById("practice-quiz");
+    const meta = document.getElementById("practice-meta");
+
+    function show() {
+      meta.textContent = `Ngân hàng ${bank.length} câu. Lượt này hỏi 5 câu, mỗi câu một dạng.`;
+      Quiz.mount(host, drawFive(bank));
+    }
+
+    document.getElementById("new-set").addEventListener("click", show);
+    show();
+  }
+
+  return { start, drawFive };
+})();
+
+if (typeof document !== "undefined") {
+  Shell.render({ active: "subnet", root: "../" });
+
+  document.getElementById("explain").addEventListener("click", () => {
+    const info = Subnet.analyze(document.getElementById("ip").value, Number(document.getElementById("prefix").value));
+    document.getElementById("explain-out").innerHTML = info ? Subnet.explain(info) : "<p class='bad'>Địa chỉ hoặc prefix không hợp lệ.</p>";
   });
-  document.getElementById("verdict").textContent = "";
 }
-
-document.getElementById("explain").addEventListener("click", () => {
-  const info = Subnet.analyze(document.getElementById("ip").value, Number(document.getElementById("prefix").value));
-  document.getElementById("explain-out").innerHTML = info ? Subnet.explain(info) : "<p class='bad'>Địa chỉ hoặc prefix không hợp lệ.</p>";
-});
-
-document.getElementById("new").addEventListener("click", newQuestion);
-
-document.getElementById("check").addEventListener("click", () => {
-  if (!current) return;
-  const answers = {
-    "a-net": current.network,
-    "a-first": current.first,
-    "a-last": current.last,
-    "a-bcast": current.broadcast
-  };
-  let good = true;
-  Object.entries(answers).forEach(([id, expected]) => {
-    const input = document.getElementById(id);
-    const typed = Subnet.ipToInt(input.value);
-    const wanted = Subnet.ipToInt(expected);
-    const ok = typed !== null && typed === wanted;
-    input.style.borderColor = ok ? "#0f6e45" : "#9d2c2c";
-    if (!ok) good = false;
-  });
-  const hosts = Number(document.getElementById("a-hosts").value);
-  const hostInput = document.getElementById("a-hosts");
-  const hostsOk = hosts === current.hosts;
-  hostInput.style.borderColor = hostsOk ? "#0f6e45" : "#9d2c2c";
-  if (!hostsOk) good = false;
-  const verdict = document.getElementById("verdict");
-  verdict.className = good ? "ok" : "bad";
-  verdict.textContent = good
-    ? "Đúng cả năm ô. Lấy đề mới ngay, đừng dừng khi vừa đúng một câu."
-    : `Có ô sai. Mạng ${current.network}, đầu ${current.first}, cuối ${current.last}, broadcast ${current.broadcast}, host dùng được ${current.hosts}. Tự tính lại đề này trước khi bấm đề mới.`;
-});
-
-newQuestion();
