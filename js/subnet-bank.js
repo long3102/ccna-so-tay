@@ -313,4 +313,3 @@ const SUBNET_BANK = (() => {
   return bank;
 })();
 
-if (typeof document !== "undefined") SubnetPage.start(SUBNET_BANK);

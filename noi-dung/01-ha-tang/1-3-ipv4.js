@@ -46,7 +46,8 @@ window.LESSON = {
     ] },
     { type: "h2", text: "Sửa một máy cấu hình sai" },
     { type: "p", text: "Máy 192.168.1.10/24, gateway 192.168.1.1 thì hợp lệ. Máy 192.168.1.10/25 mà gateway là 192.168.1.200 thì gateway nằm ở nửa mạng kia: /25 cắt tại .128, .200 thuộc 192.168.1.128/25. Máy sẽ không gửi gói tới gateway vì nó tưởng gateway ở mạng khác, hoặc gửi sai hướng. Khi xử lý sự cố địa chỉ, hãy tự tính lại mạng của host và mạng của gateway trước khi trách cáp." },
-    { type: "link", href: "cong-cu/subnet.html", label: "Luyện subnet: mỗi lượt 5 câu trong ngân hàng" },
+    { type: "link", href: "cong-cu/subnet.html", label: "Mở công cụ luyện subnet" },
+    { type: "link", href: "phan-xa.html", label: "Phản xạ subnet: 5 câu trắc nghiệm, có lời giải" },
     { type: "lab", title: "Lab 1.3 — Chia 192.168.10.0/24 cho một văn phòng", goal: "Làm trên giấy. Sau đó mới mở công cụ để đối chiếu.", tasks: [
       "Phòng kế toán cần 60 host, phòng kỹ thuật 25 host, phòng khách 10 host, đường nối router cần 2 host. Chia VLSM, mạng lớn trước.",
       "Ghi với mỗi mạng: prefix, địa chỉ mạng, host đầu, host cuối, broadcast.",

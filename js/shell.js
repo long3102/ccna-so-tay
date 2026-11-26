@@ -3,6 +3,7 @@ const Shell = (() => {
     { id: "home", href: "index.html", label: "Lộ trình" },
     { id: "review", href: "ontap.html", label: "Ôn tập" },
     { id: "subnet", href: "cong-cu/subnet.html", label: "Subnet" },
+    { id: "reflex", href: "phan-xa.html", label: "Phản xạ" },
     { id: "lab", href: "huong-dan.html", label: "Cách lab" }
   ];
 

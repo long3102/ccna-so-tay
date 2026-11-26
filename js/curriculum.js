@@ -54,7 +54,7 @@ const PLAN = [
   { week: "1", text: "Buổi 0.1 đến 0.3. Vẽ mạng nhà bạn ra giấy. Đăng ký Cisco Networking Academy và cài Packet Tracer." },
   { week: "2", text: "Nhị phân và Cisco IOS. Tự đặt hostname, mật khẩu, địa chỉ IP, rồi lưu cấu hình. Quên lưu một lần cho nhớ." },
   { week: "3", text: "Cáp, đèn cổng, lỗi duplex, và ảo hóa. Tập đọc `show interfaces` trước khi học địa chỉ." },
-  { week: "4", text: "IPv4 và subnet. Mỗi ngày 15 phút với công cụ Subnet: mỗi lượt 5 câu, tính tay rồi mới chọn." },
+  { week: "4", text: "IPv4 và subnet. Mỗi ngày 15 phút với công cụ Subnet, rồi 5 câu trắc nghiệm ở mục Phản xạ." },
   { week: "5", text: "IPv6, Wi-Fi, máy trạm Windows/macOS/Linux, và DHCP. Chủ đích làm một máy ra địa chỉ 169.254." },
   { week: "6", text: "VLAN, trunk 802.1Q, SVI và LACP. Lab hai switch, hai VLAN, hai máy ping được nhau." },
   { week: "7", text: "Cổng điện thoại, PoE, AP, CDP/LLDP. Sửa một sơ đồ mạng sai bằng lệnh hàng xóm." },
